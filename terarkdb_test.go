@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-var db Gorocksdb
+var db *Gorocksdb
 
 func TestMain(m *testing.M) {
 	setup()

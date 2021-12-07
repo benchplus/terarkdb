@@ -11,7 +11,7 @@ type Gorocksdb struct {
 	Bsync bool
 }
 
-func NewRocksDB() DBInterface {
+func NewRocksDB() &Gorocksdb {
 	return &Gorocksdb{}
 }
 
