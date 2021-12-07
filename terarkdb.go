@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 
-	"github.com/tecbot/gorocksdb"
+	"github.com/ez8-lab/gorocksdb"
 )
 
 type Gorocksdb struct {
