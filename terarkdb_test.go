@@ -1,16 +1,35 @@
 package main
 
 import (
-	"context"
-	"flag"
+	"encoding/binary"
 	"fmt"
-	"log"
 	"math/rand"
 	"os"
-	"sync"
 	"testing"
-	"time"
 )
+
+var defaultLetters = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+
+// RandomString returns a random string with a fixed length
+func randomString(n int) []byte {
+
+	letters := defaultLetters
+
+	b := make([]byte, n)
+	for i := range b {
+		b[i] = letters[rand.Intn(len(letters))]
+	}
+
+	return b
+}
+
+// I2b returns an 8-byte big endian representation of v
+// v uint64(123456) -> 8-byte big endian.
+func I2b(v uint64) []byte {
+	b := make([]byte, 8)
+	binary.BigEndian.PutUint64(b, v)
+	return b
+}
 
 var db *Gorocksdb
 
