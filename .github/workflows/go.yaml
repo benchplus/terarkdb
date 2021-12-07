@@ -20,7 +20,7 @@ jobs:
       - name: Run benchmark
         run: ./run.sh
       - name: Store benchmark result
-        uses: benchmark-action/github-action-benchmark@v1
+        uses: orcastor/orcas-engine-terarkdb@v1
         with:
           name: terarkdb
           tool: 'go'
