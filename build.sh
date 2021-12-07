@@ -1,4 +1,5 @@
 #!/bin/bash
+
 BASE=$PWD
 
 git submodule update --init --recursive
