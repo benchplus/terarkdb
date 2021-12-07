@@ -3,7 +3,7 @@ package main
 import (
 	"errors"
 
-	"github.com/tecbot/gorocksdb"
+	"github.com/orcastor/orcas-engine-terarkdb/third-party/gorocksdb"
 )
 
 type Gorocksdb struct {
