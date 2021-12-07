@@ -71,15 +71,14 @@ func BenchmarkRandWrite(b *testing.B) {
 }
 
 func BenchmarkRandRead(b *testing.B) {
-	data := randomString(4096)
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prikey), I2b(uint64(tmp))...)
 		db.Get(key)
 	}
 }
+
 func BenchmarkRandDel(b *testing.B) {
-	data := randomString(4096)
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prikey), I2b(uint64(tmp))...)
