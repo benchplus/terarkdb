@@ -1,5 +1,7 @@
 
-[![terarkdb Workflow][go-badge]][go-workflow-example]
+[![terarkdb Workflow][go-badge]][terarkdb]
+
+[Continuous Bencmark Result (click here) ](https://orca-zhang.github.io/terarkdb/dev/bench/)
 
 [go-badge]: https://github.com/orcastor/orcas-engine-terarkdb/workflows/terarkdb/badge.svg
-[go-workflow-example]: https://github.com/orcastor/orcas-engine-terarkdb/actions?query=workflow%3A%22terarkdb%22
+[terarkdb]: https://github.com/orcastor/orcas-engine-terarkdb/actions?query=workflow%3A%22terarkdb%22
