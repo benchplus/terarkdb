@@ -3,6 +3,7 @@
 BASE=$PWD
 
 git submodule update --init --recursive
+sudo apt-get install libaio-dev
 
 cd third-party/terarkdb
 git remote add mine https://github.com/ez8-lab/terarkdb.git
