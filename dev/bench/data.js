@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1639071554488,
+  "lastUpdate": 1639072386103,
   "repoUrl": "https://github.com/benchplus/terarkdb",
   "entries": {
     "terarkdb": [
@@ -1080,6 +1080,78 @@ window.BENCHMARK_DATA = {
             "value": 42354767,
             "unit": "ns/op",
             "extra": "25 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "orca.zhang@yahoo.com",
+            "name": "Orca",
+            "username": "orca-zhang"
+          },
+          "committer": {
+            "email": "orca.zhang@yahoo.com",
+            "name": "Orca",
+            "username": "orca-zhang"
+          },
+          "distinct": true,
+          "id": "2861d1c63be9ba8b38cad1ccf594eb4fca2969ee",
+          "message": ":leopard: fix for mod",
+          "timestamp": "2021-12-10T01:43:33+08:00",
+          "tree_id": "f825dab50366f6f05d9537edfdda67f707ec4a1d",
+          "url": "https://github.com/benchplus/terarkdb/commit/2861d1c63be9ba8b38cad1ccf594eb4fca2969ee"
+        },
+        "date": 1639072385431,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkSequenceWrite4K",
+            "value": 9569,
+            "unit": "ns/op",
+            "extra": "115948 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkRandWrite4K",
+            "value": 57325,
+            "unit": "ns/op",
+            "extra": "107143 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkRandRead4K",
+            "value": 15952,
+            "unit": "ns/op",
+            "extra": "102031 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkSequenceWrite4M",
+            "value": 15710835,
+            "unit": "ns/op",
+            "extra": "100 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkRandWrite4M",
+            "value": 4317794168,
+            "unit": "ns/op",
+            "extra": "1 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkRandRead4M",
+            "value": 965,
+            "unit": "ns/op",
+            "extra": "1419156 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkRandDel",
+            "value": 6618,
+            "unit": "ns/op",
+            "extra": "218998 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkGetAll",
+            "value": 79052928,
+            "unit": "ns/op",
+            "extra": "14 times\n2 procs"
           }
         ]
       }
