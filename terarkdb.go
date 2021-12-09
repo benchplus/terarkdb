@@ -20,6 +20,7 @@ func (db *Gorocksdb) Open(path string, sync bool) error {
 	env := gorocksdb.NewDefaultEnv()
 	env.SetBackgroundThreads(3)
 	opt.SetEnv(env)
+	opt.SetBytesPerSync(32768)
 	opt.SetMaxBackgroundCompactions(5)
 	opt.SetCreateIfMissing(true)
 
