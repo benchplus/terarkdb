@@ -13,7 +13,6 @@ OUTPUT=$BASE/third-party/terarkdb/output
 mkdir -p $OUTPUT
 cd $OUTPUT
 
-sudo apt-get install libaio-dev -y
 cmake ../ -DCMAKE_INSTALL_PREFIX=output -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF -DWITH_TERARK_ZIP=OFF
 make -j $(nproc)
 make install

@@ -1,3 +1,6 @@
 [submodule "third-party/terarkdb"]
 	path = third-party/terarkdb
 	url = https://github.com/bytedance/terarkdb.git
+[submodule "third-party/rocksdb"]
+	path = third-party/rocksdb
+	url = https://github.com/facebook/rocksdb
