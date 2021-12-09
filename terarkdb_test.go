@@ -85,7 +85,7 @@ func BenchmarkSequenceWrite4M(b *testing.B) {
 	data := randomString(4194304)
 	var key [][]byte
 	for i := 0; i < b.N; i++ {
-		key = apend(key, append([]byte(prefix4K), I2b(uint64(i))...))
+		key = append(key, append([]byte(prefix4K), I2b(uint64(i))...))
 	}
 	db.Write(key, data)
 }
@@ -110,7 +110,7 @@ func BenchmarkRandRead4M(b *testing.B) {
 func BenchmarkRandDel(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
-		key := append([]byte(prikey), I2b(uint64(tmp))...)
+		key := append([]byte(prefix4K), I2b(uint64(tmp))...)
 		db.Del(key)
 	}
 }
