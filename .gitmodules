@@ -3,4 +3,4 @@
 	url = https://github.com/bytedance/terarkdb.git
 [submodule "third-party/rocksdb"]
 	path = third-party/rocksdb
-	url = https://github.com/facebook/rocksdb
+	url = https://github.com/facebook/rocksdb.git
