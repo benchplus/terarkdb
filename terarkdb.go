@@ -56,7 +56,7 @@ func (db *Gorocksdb) Set(key, val []byte) error {
 
 func (db *Gorocksdb) Write(key [][]byte, val []byte) error {
 	wb := gorocksdb.NewWriteBatch()
-	for i:=0; i<len(key); ++i {
+	for i := 0; i < len(key); i++ {
 		wb.Put(key[i], val)
 	}
 	opts := gorocksdb.NewDefaultWriteOptions()
