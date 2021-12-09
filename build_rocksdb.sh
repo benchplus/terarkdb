@@ -12,8 +12,8 @@ cd third-party/terarkdb/third-party/jemalloc
 bash autogen.sh
 CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS=-fPIC ./configure --enable-prof
 make -j $(nproc)
-make install
-ldconfig
+sudo make install
+sudo ldconfig
 
 cd $OUTPUT
 
