@@ -57,7 +57,7 @@ func BenchmarkSequenceWrite4K(b *testing.B) {
 	data := randomString(4096)
 	var key [][]byte
 	for i := 0; i < b.N; i++ {
-		key = apend(key, append([]byte(prefix4K), I2b(uint64(i))...))
+		key = append(key, append([]byte(prefix4K), I2b(uint64(i))...))
 	}
 	db.Write(key, data)
 }
