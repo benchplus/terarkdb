@@ -54,6 +54,16 @@ func (db *Gorocksdb) Set(key, val []byte) error {
 	return db.DB.Put(opts, key, val)
 }
 
+func (db *Gorocksdb) Write(key [][]byte, val []byte) error {
+	wb := gorocksdb.NewWriteBatch()
+	for i:=0; i<len(key); ++i {
+		wb.Put(key[i], val)
+	}
+	opts := gorocksdb.NewDefaultWriteOptions()
+	opts.SetSync(db.Bsync)
+	return db.DB.Write(opts, wb)
+}
+
 func (db *Gorocksdb) Del(key []byte) error {
 	opts := gorocksdb.NewDefaultWriteOptions()
 	opts.SetSync(db.Bsync)

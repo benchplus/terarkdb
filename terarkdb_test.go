@@ -51,29 +51,58 @@ func shutdown() {
 	db.Close()
 }
 
-const prikey = "user/"
+const prefix4K = "user/"
 
-func BenchmarkSequenceWrite(b *testing.B) {
+func BenchmarkSequenceWrite4K(b *testing.B) {
+	data := randomString(4096)
+	var key [][]byte
+	for i := 0; i < b.N; i++ {
+		key = apend(key, append([]byte(prefix4K), I2b(uint64(i))...))
+	}
+	db.Write(key, data)
+}
+
+func BenchmarkRandWrite4K(b *testing.B) {
 	data := randomString(4096)
 	for i := 0; i < b.N; i++ {
-		key := append([]byte(prikey), I2b(uint64(i))...)
+		tmp := rand.Int31n(int32(b.N))
+		key := append([]byte(prefix4K), I2b(uint64(tmp))...)
 		db.Set(key, data)
 	}
 }
 
-func BenchmarkRandWrite(b *testing.B) {
-	data := randomString(4096)
+func BenchmarkRandRead4K(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
-		key := append([]byte(prikey), I2b(uint64(tmp))...)
+		key := append([]byte(prefix4K), I2b(uint64(tmp))...)
+		db.Get(key)
+	}
+}
+
+const prefix4M = "user1/"
+
+func BenchmarkSequenceWrite4M(b *testing.B) {
+	data := randomString(4194304)
+	var key [][]byte
+	for i := 0; i < b.N; i++ {
+		key = apend(key, append([]byte(prefix4K), I2b(uint64(i))...))
+	}
+	db.Write(key, data)
+}
+
+func BenchmarkRandWrite4M(b *testing.B) {
+	data := randomString(4194304)
+	for i := 0; i < b.N; i++ {
+		tmp := rand.Int31n(int32(b.N))
+		key := append([]byte(prefix4M), I2b(uint64(tmp))...)
 		db.Set(key, data)
 	}
 }
 
-func BenchmarkRandRead(b *testing.B) {
+func BenchmarkRandRead4M(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
-		key := append([]byte(prikey), I2b(uint64(tmp))...)
+		key := append([]byte(prefix4M), I2b(uint64(tmp))...)
 		db.Get(key)
 	}
 }
@@ -83,5 +112,11 @@ func BenchmarkRandDel(b *testing.B) {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prikey), I2b(uint64(tmp))...)
 		db.Del(key)
+	}
+}
+
+func BenchmarkGetAll(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		db.GetAll()
 	}
 }
