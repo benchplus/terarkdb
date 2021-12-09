@@ -26,19 +26,19 @@ window.BENCHMARK_DATA = {
         "tool": "go",
         "benches": [
           {
-            "name": "BenchmarkSequenceWrite",
+            "name": "BenchmarkSequenceWrite4K",
             "value": 25547,
             "unit": "ns/op",
             "extra": "200000 times\n2 procs"
           },
           {
-            "name": "BenchmarkRandWrite",
+            "name": "BenchmarkRandWrite4K",
             "value": 28167,
             "unit": "ns/op",
             "extra": "100000 times\n2 procs"
           },
           {
-            "name": "BenchmarkRandRead",
+            "name": "BenchmarkRandRead4K",
             "value": 21048,
             "unit": "ns/op",
             "extra": "100000 times\n2 procs"
@@ -74,19 +74,19 @@ window.BENCHMARK_DATA = {
         "tool": "go",
         "benches": [
           {
-            "name": "BenchmarkSequenceWrite",
+            "name": "BenchmarkSequenceWrite4K",
             "value": 24832,
             "unit": "ns/op",
             "extra": "200000 times\n2 procs"
           },
           {
-            "name": "BenchmarkRandWrite",
+            "name": "BenchmarkRandWrite4K",
             "value": 35999,
             "unit": "ns/op",
             "extra": "200000 times\n2 procs"
           },
           {
-            "name": "BenchmarkRandRead",
+            "name": "BenchmarkRandRead4K",
             "value": 16458,
             "unit": "ns/op",
             "extra": "200000 times\n2 procs"
@@ -122,19 +122,19 @@ window.BENCHMARK_DATA = {
         "tool": "go",
         "benches": [
           {
-            "name": "BenchmarkSequenceWrite",
+            "name": "BenchmarkSequenceWrite4K",
             "value": 24008,
             "unit": "ns/op",
             "extra": "200000 times\n2 procs"
           },
           {
-            "name": "BenchmarkRandWrite",
+            "name": "BenchmarkRandWrite4K",
             "value": 37144,
             "unit": "ns/op",
             "extra": "200000 times\n2 procs"
           },
           {
-            "name": "BenchmarkRandRead",
+            "name": "BenchmarkRandRead4K",
             "value": 16189,
             "unit": "ns/op",
             "extra": "100000 times\n2 procs"
