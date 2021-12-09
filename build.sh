@@ -14,7 +14,7 @@ mkdir -p $OUTPUT
 cd $OUTPUT
 
 cmake ../ -DCMAKE_INSTALL_PREFIX=output -DCMAKE_BUILD_TYPE=Release -DWITH_TESTS=OFF -DWITH_TERARK_ZIP=OFF -DFORCE_SSE42=ON
-make -j $(nproc) shared_lib
+make -j $(nproc)
 make install
 
 cp $OUTPUT/output/lib/libterarkdb.a $OUTPUT/lib/librocksdb.a
