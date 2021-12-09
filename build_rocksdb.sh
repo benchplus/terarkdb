@@ -4,10 +4,16 @@ BASE=$PWD
 
 git submodule update --init --recursive
 
-cd third-party/rocksdb
-
 OUTPUT=$BASE/third-party/rocksdb/output
 mkdir -p $OUTPUT
+
+cd third-party/terarkdb/third-party/jemalloc
+
+bash autogen.sh
+CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS=-fPIC ./configure --prefix=$OUTPUT --enable-prof
+make -j $(nproc)
+make install
+
 cd $OUTPUT
 
 sudo apt-get install libgflags-dev libsnappy-dev zlib1g-dev libbz2-dev liblz4-dev libzstd-dev -y
