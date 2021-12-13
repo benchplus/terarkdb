@@ -8,7 +8,7 @@ Simple performance comparison between [TerarkDB](https://github.com/bytedance/te
 
 Both of them with `jemalloc` open and with all the compression extensions.
 
-Commit #f1b51f1 uses terark-zip table as tutorial said and former cases without terark-zip.
+Enable [`terark-zip`](https://github.com/bytedance/terark-zip) table according to [tutorial](https://github.com/bytedance/terarkdb#22-terarkziptable) says besides the commits before [f1b51f1](https://github.com/benchplus/terarkdb/commit/f1b51f172c2265dadb29c7c3acfdf7bdab8eb73d).
 
 # Reports
 
