@@ -23,6 +23,7 @@ func (db *Gorocksdb) Open(path string, sync bool) error {
 	opt.SetBytesPerSync(32768)
 	opt.SetMaxBackgroundCompactions(5)
 	opt.SetCreateIfMissing(true)
+	opt.SetBlobSize(1024)
 
 	bbto := gorocksdb.NewDefaultBlockBasedTableOptions()
 	bbto.SetBlockSize(8192)
