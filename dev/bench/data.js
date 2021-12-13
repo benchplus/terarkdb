@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1639376980912,
+  "lastUpdate": 1639382029073,
   "repoUrl": "https://github.com/benchplus/terarkdb",
   "entries": {
     "terarkdb": [
@@ -1506,6 +1506,42 @@ window.BENCHMARK_DATA = {
             "value": 226083589,
             "unit": "ns/op",
             "extra": "5 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "orca.zhang@yahoo.com",
+            "name": "Orca",
+            "username": "orca-zhang"
+          },
+          "committer": {
+            "email": "orca.zhang@yahoo.com",
+            "name": "Orca",
+            "username": "orca-zhang"
+          },
+          "distinct": true,
+          "id": "b23e38f9e234e397ba430569317aa13d52f820c7",
+          "message": ":earth_asia: update time",
+          "timestamp": "2021-12-13T15:36:54+08:00",
+          "tree_id": "0aa6e8ecc35a8c9bbc4d4794310e8c325cff1ee6",
+          "url": "https://github.com/benchplus/terarkdb/commit/b23e38f9e234e397ba430569317aa13d52f820c7"
+        },
+        "date": 1639382027794,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkSequenceWrite4K",
+            "value": 38634,
+            "unit": "ns/op",
+            "extra": "1000000 times\n2 procs"
+          },
+          {
+            "name": "BenchmarkRandRead4K",
+            "value": 25466,
+            "unit": "ns/op",
+            "extra": "446655 times\n2 procs"
           }
         ]
       }
