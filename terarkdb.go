@@ -24,6 +24,17 @@ func (db *Gorocksdb) Open(path string, sync bool) error {
 	opt.SetMaxBackgroundCompactions(5)
 	opt.SetCreateIfMissing(true)
 
+	bbto := gorocksdb.NewDefaultBlockBasedTableOptions()
+	bbto.SetBlockSize(8192)
+
+	tzto := gorocksdb.NewDefaultTerarkZipTableOptions()
+	tzto.SetLocalTempDir("/tmp")
+	tzto.SetIndexNestLevel(3)
+	tzto.SetSampleRatio(0.01)
+	tzto.SetTerarkZipMinLevel(2)
+
+	opt.SetTerarkZipTableFactory(tzto, bbto)
+
 	database, err := gorocksdb.OpenDb(opt, path)
 	if err != nil {
 		return err
