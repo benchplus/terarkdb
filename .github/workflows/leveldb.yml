@@ -15,8 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
-      - name: Run build
-        run: ./build_leveldb.sh
       - name: Run benchmark
         run: ./run_leveldb.sh
       - name: Store benchmark result
