@@ -4,8 +4,9 @@ import (
 	"encoding/binary"
 	"fmt"
 	"math/rand"
-	"os"
 	"testing"
+
+	"github.com/syndtr/goleveldb/leveldb"
 )
 
 var defaultLetters = []byte("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
@@ -31,18 +32,11 @@ func I2b(v uint64) []byte {
 	return b
 }
 
-var db *Gorocksdb
+var db *leveldb.DB
 
-func TestMain(m *testing.M) {
-	setup()
-	code := m.Run()
-	shutdown()
-	os.Exit(code)
-}
-
-func setup() {
-	db = NewRocksDB()
-	if err := db.Open("data", false); err != nil {
+func init() {
+	var err error
+	if db, err = leveldb.OpenFile("data", nil); err != nil {
 		fmt.Println("open err")
 	}
 }
@@ -55,11 +49,13 @@ const prefix4K = "user/"
 
 func BenchmarkSequenceWrite4K(b *testing.B) {
 	data := randomString(4096)
-	var key [][]byte
+	batch := new(leveldb.Batch)
 	for i := 0; i < b.N; i++ {
-		key = append(key, append([]byte(prefix4K), I2b(uint64(i))...))
+		tmp := rand.Int31n(int32(b.N))
+		key := append([]byte(prefix4K), I2b(uint64(tmp))...)
+		batch.Put(key, data)
 	}
-	db.Write(key, data)
+	db.Write(batch, nil)
 }
 
 func BenchmarkRandWrite4K(b *testing.B) {
@@ -67,7 +63,7 @@ func BenchmarkRandWrite4K(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prefix4K), I2b(uint64(tmp))...)
-		db.Set(key, data)
+		db.Put(key, data, nil)
 	}
 }
 
@@ -75,7 +71,7 @@ func BenchmarkRandRead4K(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prefix4K), I2b(uint64(tmp))...)
-		db.Get(key)
+		db.Get(key, nil)
 	}
 }
 
@@ -83,11 +79,13 @@ const prefix4M = "user1/"
 
 func BenchmarkSequenceWrite4M(b *testing.B) {
 	data := randomString(4194304)
-	var key [][]byte
+	batch := new(leveldb.Batch)
 	for i := 0; i < b.N; i++ {
-		key = append(key, append([]byte(prefix4M), I2b(uint64(i))...))
+		tmp := rand.Int31n(int32(b.N))
+		key := append([]byte(prefix4M), I2b(uint64(tmp))...)
+		batch.Put(key, data)
 	}
-	db.Write(key, data)
+	db.Write(batch, nil)
 }
 
 func BenchmarkRandWrite4M(b *testing.B) {
@@ -95,7 +93,7 @@ func BenchmarkRandWrite4M(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prefix4M), I2b(uint64(tmp))...)
-		db.Set(key, data)
+		db.Put(key, data, nil)
 	}
 }
 
@@ -103,7 +101,7 @@ func BenchmarkRandRead4M(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prefix4M), I2b(uint64(tmp))...)
-		db.Get(key)
+		db.Get(key, nil)
 	}
 }
 
@@ -111,12 +109,18 @@ func BenchmarkRandDel(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		tmp := rand.Int31n(int32(b.N))
 		key := append([]byte(prefix4K), I2b(uint64(tmp))...)
-		db.Del(key)
+		db.Delete(key, nil)
 	}
 }
 
 func BenchmarkGetAll(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		db.GetAll()
+		iter := db.NewIterator(nil, nil)
+		for iter.Next() {
+		}
+		iter.Release()
+		if err := iter.Error(); err != nil {
+			fmt.Println("iter err")
+		}
 	}
 }
